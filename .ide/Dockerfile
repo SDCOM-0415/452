@@ -11,7 +11,7 @@ RUN apt-get update && \
 RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
 
 # 以及按需安装其他软件
-RUN apt-get update && apt-get install -y git sudo vim curl 
+RUN apt-get update && apt-get install -y git sudo vim curl git-lfs
 
 # 安装 code-server 和 vscode 常用插件
 RUN curl -fsSL https://code-server.dev/install.sh | sh \
