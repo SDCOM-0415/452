@@ -1,0 +1,51 @@
+# Netlify 构建设置
+[build]
+  # 构建命令
+  command = "npm run build"
+  # 发布目录（Vue 默认构建输出目录）
+  publish = "dist"
+  # Node.js 版本
+  environment = { NODE_VERSION = "20" }
+
+# 处理 SPA 路由
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 静态资源缓存设置
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/pic/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    # 启用图片优化
+    Accept-Encoding = "br, gzip"
+
+# 性能和安全设置
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';"
+
+# 构建插件设置
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
+
+# 自定义 404 页面
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
