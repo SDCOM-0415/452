@@ -13,7 +13,7 @@
           class="photo-item"
           @click="showPhoto(photo)"
         >
-          <img v-lazy="`/pic/${photo}`" :alt="photo" />
+          <img v-lazy="`https://my.xiguacity.cn/study/239904223/684412c92d1be91a5cc169dc/${photo}`" :alt="photo" />
           <div class="photo-overlay">
             <n-icon size="24">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
         <div class="modal-content">
           <img
             v-if="currentPhoto"
-            v-lazy="`/pic/${currentPhoto}`"
+            v-lazy="`https://my.xiguacity.cn/study/239904223/684412c92d1be91a5cc169dc/${currentPhoto}`"
             :alt="currentPhoto"
             @load="preloadAdjacentPhotos"
           />
@@ -78,8 +78,10 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import photoList from '../assets/photo-list.json'
 
 const PHOTOS_PER_PAGE = 20 // 每页显示的照片数量
+const CDN_PREFIX = 'https://my.xiguacity.cn/study/239904223/684412c92d1be91a5cc169dc'
 
 const photos = ref([])
 const loading = ref(true)
@@ -102,11 +104,8 @@ const currentPhotoIndex = computed(() => {
 
 const loadPhotos = async () => {
   try {
-    const response = await fetch('/photo-list.json')
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
-    }
-    photos.value = await response.json()
+    // 使用本地 JSON 文件
+    photos.value = photoList
   } catch (error) {
     console.error('Error loading photos:', error)
   } finally {
@@ -151,7 +150,7 @@ const preloadAdjacentPhotos = () => {
     const preloadIndex = index + i
     if (preloadIndex >= 0 && preloadIndex < photos.value.length && i !== 0) {
       const img = new Image()
-      img.src = `/pic/${photos.value[preloadIndex]}`
+      img.src = `${CDN_PREFIX}/${photos.value[preloadIndex]}`
       preloadImages.push(img)
     }
   }
