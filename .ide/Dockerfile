@@ -2,7 +2,6 @@
 FROM node:20
 
 # 腾讯云软件源使用示例: https://cnb.cool/examples/mirrors/mirrors.cloud.tencent.com
-
 RUN sed -i "s@http://deb.debian.org/debian@http://mirrors.cloud.tencent.com/debian@g" /etc/apt/sources.list.d/debian.sources
 
 RUN apt-get update && \
@@ -30,6 +29,8 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh \
   && code-server --install-extension yandeu.five-server \
   && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans \
   && echo done
+
+RUN ls -l
 
 # 安装中文
 COPY ./argv.json /root/.local/share/code-server/User/
