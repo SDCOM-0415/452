@@ -1,0 +1,13 @@
+{
+  "zh-cn": {
+    "hash": "auto-generated",
+    "extensions": [
+      {
+        "extensionIdentifier": {
+          "id": "ms-ceintl.vscode-language-pack-zh-hans"
+        },
+        "version": "latest"
+      }
+    ]
+  }
+}
