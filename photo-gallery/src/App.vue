@@ -1,6 +1,6 @@
 <template>
   <n-config-provider :theme="theme">
-    <n-layout>
+    <n-layout position="absolute">
       <n-layout-header style="padding: 24px">
         <div class="header">
           <h1>照片库</h1>
@@ -12,6 +12,9 @@
       <n-layout-content>
         <photo-list />
       </n-layout-content>
+      <n-layout-footer class="footer">
+        <p>Powered by <a href="https://www.sdcom.asia" target="_blank">SDCOM</a> © 2025</p>
+      </n-layout-footer>
     </n-layout>
   </n-config-provider>
 </template>
@@ -44,5 +47,22 @@ body {
 
 h1 {
   margin: 0;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px 0;
+  font-size: 14px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #18a058;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
 }
 </style>
