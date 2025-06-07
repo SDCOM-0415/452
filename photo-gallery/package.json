@@ -1,0 +1,23 @@
+{
+  "name": "photo-gallery",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "generate-photos": "node scripts/generate-photo-list.js",
+    "dev": "npm run generate-photos && vite",
+    "build": "npm run generate-photos && vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@vueuse/core": "^13.3.0",
+    "naive-ui": "^2.41.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "vite": "^6.3.5"
+  }
+}
