@@ -16,7 +16,7 @@ export default defineConfig({
     strictPort: false,
     open: true,
     cors: true,
-    allowedHosts: ['8cwd1kuqqx-5173.cnb.run', '452.sdcom.asia', '452pic.netlify.app', 'localhost', '127.0.0.1'],
+    allowedHosts: ['qe2wh232zw-5173.cnb.run', '452.sdcom.asia', '452pic.netlify.app', 'localhost', '127.0.0.1'],
     fs: {
       strict: false, // 禁用严格的文件系统限制
       allow: ['..'] // 允许访问上级目录
