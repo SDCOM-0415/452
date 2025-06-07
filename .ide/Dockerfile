@@ -28,12 +28,8 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh \
   && code-server --install-extension donjayamanne.githistory \
   && code-server --install-extension yandeu.five-server \
   && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans \
+  && wget wget https://cnb.cool/SDCOM/Web/452/-/git/raw/main/.ide/argv.json -O /root/.local/share/code-server/User/argv.json
   && echo done
-
-RUN ls -l
-
-# 安装中文
-COPY /workspace/.ide/argv.json /root/.local/share/code-server/User/
 
 # 安装 ssh 服务，用于支持 VSCode 客户端通过 Remote-SSH 访问开发环境
 RUN apt-get update && apt-get install -y wget unzip openssh-server
