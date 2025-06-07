@@ -1,40 +1,30 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-
-// Naive UI
 import {
   create,
-  NButton,
+  NConfigProvider,
   NLayout,
   NLayoutHeader,
   NLayoutContent,
-  NSelect,
-  NSpin,
-  NEmpty,
+  NButton,
   NModal,
-  NInput,
-  NIcon,
+  NEmpty,
+  NIcon
 } from 'naive-ui'
+import App from './App.vue'
 
 const naive = create({
   components: [
-    NButton,
+    NConfigProvider,
     NLayout,
     NLayoutHeader,
     NLayoutContent,
-    NSelect,
-    NSpin,
-    NEmpty,
+    NButton,
     NModal,
-    NInput,
-    NIcon,
+    NEmpty,
+    NIcon
   ]
 })
 
 const app = createApp(App)
-
-app.use(router)
 app.use(naive)
-
 app.mount('#app')

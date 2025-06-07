@@ -12,23 +12,23 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    host: '0.0.0.0',
+    host: true, // 监听所有地址
     strictPort: false,
     open: true,
     cors: true,
     allowedHosts: ['31b5a7whu6-5173.cnb.run', '452.sdcom.asia', '452pic.netlify.app', 'localhost', '127.0.0.1'],
     fs: {
-      // 允许为项目根目录上一级的文件提供服务
-      allow: ['..']
+      strict: false, // 禁用严格的文件系统限制
+      allow: ['..'] // 允许访问上级目录
     }
   },
   // 配置静态资源处理
   publicDir: 'public',
-  base: '/',
+  base: './', // 使用相对路径
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: 'hidden',
+    sourcemap: true,
     assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
