@@ -31,6 +31,9 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh \
   && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans \
   && echo done
 
+# 安装中文
+COPY argv.json ~/.local/share/code-server/User/
+
 # 安装 ssh 服务，用于支持 VSCode 客户端通过 Remote-SSH 访问开发环境
 RUN apt-get update && apt-get install -y wget unzip openssh-server
 
