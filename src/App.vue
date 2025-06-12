@@ -1,34 +1,51 @@
 <template>
   <n-config-provider :theme="theme">
-    <n-layout position="absolute">
-      <n-layout-header style="padding: 24px">
-        <div class="header">
-          <h1>照片库</h1>
-          <n-button @click="toggleTheme">
-            切换{{ theme === darkTheme ? '浅色' : '深色' }}主题
-          </n-button>
-        </div>
-      </n-layout-header>
-      <n-layout-content>
-        <photo-list />
-      </n-layout-content>
-      <n-layout-footer class="footer">
-        <p>Powered by <a href="https://www.sdcom.asia" target="_blank">SDCOM</a> © 2025</p>
-      </n-layout-footer>
-    </n-layout>
+    <n-message-provider>
+      <router-view v-slot="{ Component }">
+        <component :is="Component" />
+      </router-view>
+    </n-message-provider>
   </n-config-provider>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, provide, onMounted, getCurrentInstance } from 'vue'
 import { darkTheme, lightTheme } from 'naive-ui'
-import PhotoList from './components/PhotoList.vue'
 
 const theme = ref(lightTheme)
 
 const toggleTheme = () => {
   theme.value = theme.value === lightTheme ? darkTheme : lightTheme
+  // 保存主题偏好到本地存储
+  localStorage.setItem('theme', theme.value === darkTheme ? 'dark' : 'light')
 }
+
+// 使用 provide 提供主题状态和切换函数
+provide('theme', theme)
+provide('toggleTheme', toggleTheme)
+
+// 同时也设置为全局属性，以便在非组件环境中使用
+onMounted(() => {
+  const app = getCurrentInstance()?.appContext.app
+  if (app) {
+    app.config.globalProperties.theme = theme
+    app.config.globalProperties.toggleTheme = toggleTheme
+  }
+  
+  // 从本地存储中恢复主题设置
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme === 'dark') {
+    theme.value = darkTheme
+  }
+
+  // 初始化密码保护设置
+  if (localStorage.getItem('needPassword') === null) {
+    localStorage.setItem('needPassword', 'true')
+  }
+  if (localStorage.getItem('passwordVerified') === null) {
+    localStorage.setItem('passwordVerified', 'false')
+  }
+})
 </script>
 
 <style>

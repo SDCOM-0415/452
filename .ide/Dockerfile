@@ -30,6 +30,7 @@ RUN curl -fsSL https://code-server.dev/install.sh | sh \
   && code-server --install-extension ms-ceintl.vscode-language-pack-zh-hans@1.100.0 \
   && wget https://cnb.cool/SDCOM/Web/452/-/git/raw/main/.ide/argv.json -O /root/.local/share/code-server/User/argv.json \
   && wget https://cnb.cool/SDCOM/Web/452/-/git/raw/main/.ide/languagepacks.json -O /root/.local/share/code-server/languagepacks.json \
+  && code-server --install-extension vue.volar \
   && echo done
 
 # 安装 ssh 服务，用于支持 VSCode 客户端通过 Remote-SSH 访问开发环境
