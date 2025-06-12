@@ -69,7 +69,7 @@ const handleSubmit = (e) => {
         
         if (formValue.value.password === correctPassword) {
           // 密码正确
-          localStorage.setItem('passwordVerified', 'true')
+          sessionStorage.setItem('passwordVerified', 'true')
           message.success('验证成功')
           router.push('/')
         } else {

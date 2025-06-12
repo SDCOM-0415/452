@@ -42,8 +42,8 @@ onMounted(() => {
   if (localStorage.getItem('needPassword') === null) {
     localStorage.setItem('needPassword', 'true')
   }
-  if (localStorage.getItem('passwordVerified') === null) {
-    localStorage.setItem('passwordVerified', 'false')
+  if (sessionStorage.getItem('passwordVerified') === null) {
+    sessionStorage.setItem('passwordVerified', 'false')
   }
 })
 </script>

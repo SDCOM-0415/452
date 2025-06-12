@@ -21,7 +21,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // 检查是否需要密码验证
   const needPassword = localStorage.getItem('needPassword') === 'true'
-  const hasVerified = localStorage.getItem('passwordVerified') === 'true'
+  const hasVerified = sessionStorage.getItem('passwordVerified') === 'true'
 
   if (needPassword && !hasVerified && to.name !== 'password') {
     // 需要密码但未验证，重定向到密码页面
