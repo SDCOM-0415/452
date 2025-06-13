@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "id": "photos",
+      "name": "照片",
+      "cdnPrefix": "https://my.xiguacity.cn/study/239904223/684412c92d1be91a5cc169dc",
+      "items": []
+    },
+    {
+      "id": "videos",
+      "name": "视频",
+      "cdnPrefix": "https://my.xiguacity.cn/videos",
+      "items": []
+    }
+  ],
+  "items": [
+    {
+      "id": "example1.jpg",
+      "type": "image",
+      "category": "photos",
+      "filename": "example1.jpg",
+      "createdAt": "2024-01-20T12:00:00Z"
+    },
+    {
+      "id": "example2.mp4",
+      "type": "video",
+      "category": "videos",
+      "filename": "example2.mp4",
+      "createdAt": "2024-01-19T12:00:00Z"
+    }
+  ]
+}
