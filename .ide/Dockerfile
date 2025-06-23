@@ -8,8 +8,6 @@ RUN apt-get update && \
     apt-get install -y git && \
     rm -rf /var/lib/apt/lists/*
 
-RUN npm config set registry https://mirrors.cloud.tencent.com/npm/
-
 # 以及按需安装其他软件
 RUN apt-get update && apt-get install -y git sudo vim curl git-lfs
 

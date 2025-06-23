@@ -65,7 +65,7 @@ const handleSubmit = (e) => {
       loading.value = true
       try {
         // 这里替换为实际的密码
-        const correctPassword = '123456'
+        const correctPassword = 'ZYEZ_452'
         
         if (formValue.value.password === correctPassword) {
           // 密码正确
