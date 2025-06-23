@@ -12,7 +12,7 @@
       <photo-list />
     </n-layout-content>
     <n-layout-footer class="footer">
-      <p>Powered by <a href="https://www.sdcom.asia" target="_blank">SDCOM</a> © 2025</p>
+      <p>Powered by <a href="https://sdcom.top" target="_blank">SDCOM</a> © 2025</p>
       <p v-if="showICP" class="icp-info">
         <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2023009313号-3</a>
       </p>
