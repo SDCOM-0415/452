@@ -104,8 +104,8 @@ const currentPhotoIndex = computed(() => {
 
 const loadPhotos = async () => {
   try {
-    // 使用本地 JSON 文件
-    photos.value = photoList
+    // 使用本地 JSON 文件，并将照片列表倒序排列
+    photos.value = [...photoList].reverse()
   } catch (error) {
     console.error('Error loading photos:', error)
   } finally {
