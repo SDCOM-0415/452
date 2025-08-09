@@ -18,7 +18,11 @@
       </p>
       <p v-if="showNetlify" class="netlify-badge">
         <a href="https://www.netlify.com" target="_blank">
-          <img src="/netlify-logo.svg" alt="Netlify" width="80" />
+          <img 
+            :src="theme === darkTheme ? '/netlify-light.svg' : '/netlify-dark.svg'" 
+            alt="Netlify" 
+            width="80" 
+          />
         </a>
       </p>
     </n-layout-footer>
