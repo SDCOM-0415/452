@@ -16,6 +16,11 @@
       <p v-if="showICP" class="icp-info">
         <a href="https://beian.miit.gov.cn/" target="_blank">赣ICP备2023009313号-3</a>
       </p>
+      <p v-if="showNetlify" class="netlify-badge">
+        <a href="https://www.netlify.com" target="_blank">
+          <img src="/netlify-logo.svg" alt="Netlify" width="80" />
+        </a>
+      </p>
     </n-layout-footer>
   </n-layout>
 </template>
@@ -32,6 +37,11 @@ const toggleTheme = inject('toggleTheme')
 // 检测当前域名，只在特定域名下显示备案信息
 const showICP = computed(() => {
   return window.location.hostname === '452.sdcom.top'
+})
+
+// 检测当前域名，只在非452.sdcom.top域名下显示Netlify图标
+const showNetlify = computed(() => {
+  return window.location.hostname !== '452.sdcom.top'
 })
 </script>
 
@@ -76,5 +86,9 @@ h1 {
 
 .icp-info a:hover {
   color: #18a058;
+}
+
+.netlify-badge {
+  margin-top: 8px;
 }
 </style>
